@@ -1,5 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
+from urllib.parse import unquote
 
 full_data_list = []
 count_of_sities=0
@@ -87,6 +88,8 @@ class RequestHandler(BaseHTTPRequestHandler):
             else:
                 raise ValueError
 
+
+
         except ValueError:
             response_data = {'method1': 'method1', 'data': 'Invalid value'}
             self.sendAnswer(response_data)
@@ -148,6 +151,7 @@ class RequestHandler(BaseHTTPRequestHandler):
                 self.sendAnswer(response_data)
 
                 break
+
 
         else:
             response_data = {'method': 'method3', 'data': 'No sity whith this name'}
